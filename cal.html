@@ -1,0 +1,201 @@
+<html>
+<head>
+	<script>
+		function insert(num){
+		
+		if (num === '.'&& document.getElementById("d").value.includes('.')){
+
+        if(document.getElementById("d").value.endsWith(".")) return;
+
+
+        if(document.getElementById("d").value.includes('+')||('-')||('/')||('*') && 1 > dotcount()){
+            document.getElementById("d").value = document.getElementById("d").value + num;   
+        }
+        return;
+    }
+
+
+
+
+    if (num === '+'&& document.getElementById("d").value.includes('+')){
+        equal();
+        document.getElementById("d").value = document.getElementById("d").value + num;
+        return;}
+
+    if (num === '-'&& document.getElementById("d").value.includes('-')){
+        equal();
+        document.getElementById("d").value = document.getElementById("d").value + num;
+        return;}
+
+    if (num === '/'&& document.getElementById("d").value.includes('/')){
+        equal();
+        document.getElementById("d").value = document.getElementById("d").value + num;
+        return;}
+
+    if (num === '*'&& document.getElementById("d").value.includes('*')){
+        equal()
+        document.getElementById("d").value = document.getElementById("d").value + num;
+        ;return;}
+
+    if (num === '%'&& document.getElementById("d").value.includes('%')){
+        equal()
+        document.getElementById("d").value = document.getElementById("d").value + num;
+        ;return;}
+
+
+
+
+
+    document.getElementById("d").value = document.getElementById("d").value + num;
+
+
+
+
+    if (document.getElementById("d").value === '+')  {
+        clean(); }
+    if (document.getElementById("d").value === '*') {
+        clean(); }
+    if (document.getElementById("d").value === '/')  {
+        clean(); }
+    if (document.getElementById("d").value === '%')  {
+        clean(); }
+
+
+}        function dotcount(){
+
+
+        let secnd_num = document.getElementById("d").value.split('+')||('-')||('/')||('*');
+
+        let scnnum_dots = secnd_num[1].split('.').length - 1;
+               
+            return scnnum_dots;
+
+}
+
+
+
+		function clean()
+		{
+			document.form.textV.value =""
+		}
+		function equal()
+		{
+			var cal =document.form.textV.value ;
+			if (cal)
+			 {
+			 	document.form.textV.value =eval(cal)
+			 }
+        }
+
+        function del(){
+
+        	document.getElementById("d").value=document.getElementById("d").value.slice(0,-1);
+        }
+
+        
+   		 
+        
+			
+		
+
+	</script>
+	<style>
+		
+		input[type=text]{
+			width:72%;
+			padding:6px;
+			font-size:22px;
+			margin:5px;
+			height:50px;
+			border: 0;	
+			text-align: right;
+
+
+    	}
+		input[type=button]{
+			width:50px;
+			height:50px;
+			font-size:25px;
+			cursor:pointer;
+			border: 0;
+            color: #495069;
+
+            
+            
+
+		}
+		.main{
+			position:absolute;
+			top:40%;
+			left:50%;
+			transform:translateX(-50%) translateY(-50%);
+
+		}
+
+
+			
+			body{
+              background-color: #a9bd7e;
+
+		}
+		
+		
+
+}
+		
+
+		
+	</style>
+
+	</head>
+
+	<body>
+		         
+		<div class= "main">
+		<form name ="form">
+			<input type="text" name="textV" id="d" readonly>
+			<div>
+				<table>
+                      <tr>
+                      	<td><input type="button" value="C"   onclick="clean()" style="background-color:#fb0066;" ></td>
+                      	<td><input type="button" value="/" onclick="insert('/')"></td>
+                       <td><input type="button" value="*" onclick="insert('*')"></td>
+                       <td><input type="button" value="%" onclick="insert('%')"></td>
+                       
+                   </tr>
+
+                <tr>
+                      	<td><input type="button" value="7" onclick="insert(7)"></td>
+                      	<td><input type="button" value="8" onclick="insert(8)"></td>
+                       <td><input type="button" value="9" onclick="insert(9)"></td>
+                       <td><input type="button" value="-" onclick="insert('-')"></td>
+                   </tr>
+
+                   <tr>
+                      	<td><input type="button" value="4" onclick="insert(4)"></td>
+                      	<td><input type="button" value="5" onclick="insert(5)"></td>
+                       <td><input type="button" value="6" onclick="insert(6)"></td>
+                       <td><input type="button" value="+" onclick="insert('+')"></td>
+                   </tr>
+
+                   <tr>
+                      	<td><input type="button" value="1" onclick="insert(1)"></td>
+                      	<td><input type="button" value="2" onclick="insert(2)"></td>
+                       <td><input type="button" value="3" onclick="insert(3)"></td>
+                       <td><input type="button" value="=" onclick="equal()"></td>
+                   </tr>
+
+                   <tr>
+                      	
+                      	<td><input type="button" value="0" onclick="insert(0)" > </td> 
+                       <td><input type="button" value="." onclick="insert('.')"></td>
+                       <td colspan=2><input type="button" value="DEl" onclick="del()" style="width:100px"></td>
+                       
+                   </tr>
+
+
+
+				</table>
+			</div>
+		</form>
+	</html>
